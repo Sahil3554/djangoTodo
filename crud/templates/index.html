@@ -1,0 +1,54 @@
+{% extends 'base.html' %} {% block body %}
+<div class="container">
+  <h1 class="text-primary">Add ToDo</h1>
+  <form method="POST" action="/">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="name" class="form-label">Name</label>
+      <input type="text" class="form-control" id="name" name="name" required />
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Description</label>
+      <input type="text" class="form-control" id="desc" name="desc" required />
+    </div>
+    <button type="submit" class="btn btn-outline-primary">Submit</button>
+  </form>
+  <h1 class="text-primary my-2 mt-4">All Todos</h1>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Description</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for todos in todo_list %}
+      <tr>
+        <th scope="row">{{ forloop.counter }}</th>
+        <td>{{ todos.name}}</td>
+        <td>{{ todos.desc}}</td>
+        <td>
+          <a
+            type="button"
+            class="btn btn-outline-primary btn-sm"
+            href="/update/{{ todos.id}}"
+          >
+            Update
+          </a>
+          <a
+            type="button"
+            class="btn btn-outline-danger btn-sm"
+            href="/delete/{{ todos.id}}"
+          >
+            Delete
+          </a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% endblock body %}
