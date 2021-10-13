@@ -24,5 +24,5 @@
 ![This is a Preview Image.](/images/sample.png "This is a sample image.")
 
 ## Links
-
-[View Live Preview](https://markdownlivepreview.com/).
+[View Live Preview](https://github.com/Sahil3554/djangoTodo).
+### Available Soon
